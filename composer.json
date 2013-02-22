@@ -1,0 +1,24 @@
+{
+    "name": "filipekiss/json-seeder",
+    "description": "",
+    "authors": [
+        {
+            "name": "Filipe Kiss",
+            "email": "eu@filipekiss.com.br"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x",
+        "symfony/console": "2.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/commands"
+        ],
+        "psr-0": {
+            "Filipekiss\\JsonSeeder": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
