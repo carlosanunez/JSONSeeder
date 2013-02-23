@@ -65,7 +65,7 @@ class JsonSeeder extends Command {
 		$this->callingPath = realpath( dirname( $_SERVER['SCRIPT_FILENAME'] ) );
 		$this->seedPath = $this->callingPath . '/app/database/seeds';
 		$this->JSONSeederPath = dirname(__FILE__);
-		$this->stubsPath =  $this->JSONSeederPath.'/templates';
+		$this->stubsPath =  realpath( $this->JSONSeederPath.'/../stubs' );
 	}
 
 	public function verifyFiles(){
