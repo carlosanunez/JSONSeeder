@@ -40,6 +40,9 @@ class JsonSeeder extends Command {
 	 */
 	public function fire()
 	{
+
+		$this->excludeKeys = $this->option('exclude-key');
+
 		$this->definePaths();
 
 		$this->verifyFiles();
@@ -165,7 +168,8 @@ class JsonSeeder extends Command {
 				$id = $details->id;
 			$data['id'] = $id;
 			foreach( $details as $key => $val ){
-				$data[$key] = $val;
+				if( ! in_array($key, $this->excludeKeys) )
+					$data[$key] = $val;
 			}
 			$dataset[] = $data;
 		}
@@ -236,6 +240,8 @@ class JsonSeeder extends Command {
 			array('modelName', null, InputOption::VALUE_OPTIONAL, 'Optional: The model name to this Seed. If not passed, user will be interactively asked. Does NOT work with multiple files.', null),
 			array('tableName', null, InputOption::VALUE_OPTIONAL, 'Optional: The table name to this Seed. If not passed, user will be interactively asked. Does NOT work with multiple files.', null),
 			array('default-path', null, InputOption::VALUE_NONE, 'If this option is passed, JSONSeeder will NOT confirm the path where to save the seeds before saving it.', null),
+			array('exclude-key', null, InputOption::VALUE_OPTIONAL + InputOption::VALUE_IS_ARRAY, 'Keys to ignore from the JSON when building the seed. You may pass more than one.', null),
+
 		);
 	}
 
