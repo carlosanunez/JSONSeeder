@@ -123,7 +123,7 @@ class JsonSeeder extends Command {
 			$className = $this->generateClassName( $file );
 			$this->buildPanel(' Generating seed for '.basename($file).' - '.$className . ' ' , 'question' );
 			$this->seederDetails( $className );
-			$template = file_get_contents($this->JSONSeederPath.'/JSONSeeder/DBSeeder.template.php');
+			$template = file_get_contents($this->JSONSeederPath.'/templates/DBSeeder.template.php');
 			$replace = array( ':className' => $this->className , ':tableName' => $this->tableName, ':modelName' => $this->modelName );
 			$output = str_replace(array_keys($replace), array_values($replace), $template);
 			$seedBlockTemplate = $this->getSeedBlock( $output );
